@@ -1,14 +1,27 @@
 {
-  "name": "application-name",
+  "name": "mont-my-money",
   "version": "0.0.1",
   "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "npm i && nodemon --watch app.js --watch app --watch api server.js"
+  },
   "dependencies": {
     "body-parser": "^1.0.2",
-    "ejs": "^2.5.7",
     "error-handler": "^0.1.4",
     "express": "~4.1.1",
     "express-error-handler": "^1.1.0",
     "method-override": "^1.0.0",
-    "morgan": "^1.0.0"
+    "morgan": "^1.0.0",
+    "bootstrap": "^3.3.7",
+    "ejs": "^2.5.7",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "moment": "^2.18.1",
+    "mysql": "^2.15.0",
+    "bcryptjs": "^2.4.3",
+    "ionicons": "^3.0.0",
+    "jsonwebtoken": "^7.4.1"
   }
 }

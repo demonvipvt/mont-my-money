@@ -10,6 +10,10 @@ angular.module('myApp', [
 ]).
 config(function ($routeProvider, $locationProvider) {
   $routeProvider.
+    when('/', {
+      templateUrl: 'partials/partial1',
+      controller: 'MyCtrl1'
+    }).
     when('/view1', {
       templateUrl: 'partials/partial1',
       controller: 'MyCtrl1'
@@ -18,8 +22,12 @@ config(function ($routeProvider, $locationProvider) {
       templateUrl: 'partials/partial2',
       controller: 'MyCtrl2'
     }).
+    when('/view2/:id', {
+      templateUrl: 'partials/partial2/',
+      controller: 'MyCtrl2'
+    }).
     otherwise({
-      redirectTo: '/view1'
+      templateUrl: 'err404'
     });
 
   $locationProvider.html5Mode(true);
