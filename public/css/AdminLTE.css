@@ -3392,14 +3392,14 @@ table.text-center th {
 .register-logo a {
   color: #444;
 }
-.login-page,
-.register-page {
+.auth-page {
   background: #d2d6de;
 }
 .login-box,
 .register-box {
   width: 360px;
-  margin: 7% auto;
+  margin: 0 auto;
+  padding-top: 7%;
 }
 @media (max-width: 768px) {
   .login-box,
