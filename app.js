@@ -28,7 +28,7 @@ var app = module.exports = express();
 // all environments
 app.set('config', config);
 app.set('port', config.port);
-app.set('views', __dirname + '/app');
+app.set('views', __dirname);
 app.set('view engine', 'ejs');
 app.use(bodyParser());
 
