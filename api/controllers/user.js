@@ -5,23 +5,44 @@ var express = require('express'),
 	jwt = require('./jwt.js'),
 	userModel = require('../models/user.js');
 // middleware that is specific to this router
-// router.use(function timeLog (req, res, next) {
-// 	pageModel.title('/auth'+req.path, function(title){
-// 		req.page_title = title;
-// 		next();
-// 	});
-// })
+// router.use(jwt.verifyToken);
 // define the home page route
-router.post('/', function (req, res, next) {
+router.get('/', jwt.verifyToken, function (req, res, next) {
+	if(!req.userId) next();
+	
+	userModel.getInfo(req.userId, function( error, data){
+		req.error = error;
+		if(data){
+			req.data = data[0];
+		}
+		next();
+	})
+});
+router.post('/login', function (req, res, next) {
+	var user = req.body;
+	userModel.login(user, function( error, data){
+		req.error = error;
+		if(data && data.length > 0){
+			req.data = {
+				token : jwt.createToken(data.userId),
+				type : data.type,
+				email : data.email,
+				fullname : data.fullname
+			};
+		}
+		next();
+	})
+});
+router.post('/register', function (req, res, next) {
 	var user = req.body;
 	user.type = 'user';
 	userModel.register(user, function( error, data){
 		req.error = error;
 		if(data){
-			var data = {
-				token : jwt.createToken(data.insertId)
-			}
-			req.data = data;
+			req.data = {
+				token : jwt.createToken(data.insertId),
+				type : user.type
+			};
 		}
 		next();
 	})

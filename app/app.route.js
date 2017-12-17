@@ -1,6 +1,7 @@
 'use strict';
 
-app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+app.config(function( $stateProvider, $urlRouterProvider, $locationProvider) {
+
     $stateProvider
         .state('root', {
             url: '/',
@@ -24,4 +25,4 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     $locationProvider.html5Mode(true);
     // For any unmatched url, send to /populations
     // $urlRouterProvider.otherwise('/about')
-})
+});

@@ -4,7 +4,7 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "npm i && nodemon --watch app.js --watch app --watch api --watch routes.js server.js"
+    "start": "npm i && nodemon --watch app.js --watch api --watch routes.js server.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.11",
