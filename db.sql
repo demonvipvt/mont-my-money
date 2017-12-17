@@ -22,15 +22,16 @@ CREATE TABLE IF NOT EXISTS `account` (
   `email` varchar(250) NOT NULL DEFAULT '0',
   `password` varchar(250) NOT NULL DEFAULT '0',
   `type` varchar(10) NOT NULL DEFAULT '0',
+  `fullname` varchar(250) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 
 -- Dumping data for table my-money.account: ~1 rows (approximately)
 DELETE FROM `account`;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` (`id`, `email`, `password`, `type`) VALUES
-	(1, 'tin@rasia.info', '123456', 'user');
+INSERT INTO `account` (`id`, `email`, `password`, `type`, `fullname`) VALUES
+	(8, 'tin@rasia.info', '123456', 'user', 'Do Duc Tin');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 
 -- Dumping structure for table my-money.category
@@ -55,12 +56,13 @@ CREATE TABLE IF NOT EXISTS `page` (
   PRIMARY KEY (`path`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumping data for table my-money.page: ~2 rows (approximately)
+-- Dumping data for table my-money.page: ~3 rows (approximately)
 DELETE FROM `page`;
 /*!40000 ALTER TABLE `page` DISABLE KEYS */;
 INSERT INTO `page` (`path`, `title`) VALUES
 	('/auth', 'Login'),
-	('/auth/login', 'Login');
+	('/auth/login', 'Login'),
+	('/auth/register', 'Register');
 /*!40000 ALTER TABLE `page` ENABLE KEYS */;
 
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
