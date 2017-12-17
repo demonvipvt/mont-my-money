@@ -4156,7 +4156,7 @@ table.text-center th {
 .register-box {
     width: 360px;
     margin: 0 auto;
-    padding-top: 7%;
+    padding-top: 5%;
 }
 
 @media (max-width: 768px) {

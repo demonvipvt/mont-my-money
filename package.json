@@ -4,11 +4,12 @@
   "private": true,
   "main": "app.js",
   "scripts": {
-    "start": "npm i && nodemon --watch app.js --watch app --watch api server.js"
+    "start": "npm i && nodemon --watch app.js --watch app --watch api --watch routes.js server.js"
   },
   "dependencies": {
     "@uirouter/angularjs": "^1.0.11",
     "angular": "^1.2.32",
+    "angular-resource": "^1.2.32",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.0.2",
     "bootstrap": "^3.3.7",

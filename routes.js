@@ -2,7 +2,8 @@
 var express = require('express'),
 	router = express.Router(),
 	path = require('path'),
-	pageModel = require('./app/models/page');
+	apiRoutes = require('./api/api.routes'),
+	pageModel = require('./app/models/page'),
 	express = require('express');
 
 
@@ -12,7 +13,7 @@ module.exports = function(app){
 	app.use('/libs', express.static(path.join(__dirname, 'node_modules')));
 	app.use('/src', express.static( path.join(__dirname, 'app') ) );
 	// Auth
-	// app.use("/auth", authRoutes);
+	app.use("/api", apiRoutes);
 	// middleware that is specific to this router
 	app.use(getPageTile);
 	// Home 

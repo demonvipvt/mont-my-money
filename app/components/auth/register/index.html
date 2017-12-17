@@ -1,33 +1,41 @@
-<p class="login-box-msg">
-    Register a new membership</p>
-<form action="../../index.html" method="post">
+<p class="login-box-msg">Register a new membership</p>
+<form name="RegisterFrom" ng-submit="submit()">
+
     <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="Full name">
+        <input type="text" ng-model="newUser.fullname" name="fullname" class="form-control" placeholder="Full name" required>
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
+        <span style="color: red" ng-show="RegisterFrom.fullname.$dirty && RegisterFrom.fullname.$invalid">The Fullname is required.</span>
     </div>
-    <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+
+    <div class="form-group has-feedback" >
+        <input type="email" ng-model="newUser.email" name="email" class="form-control" placeholder="Email" required>
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+        <span style="color: red" ng-show="RegisterFrom.email.$dirty && RegisterFrom.email.$invalid">The Email is required.</span>
     </div>
+
     <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" ng-model="newUser.password" name="password" class="form-control" placeholder="Password" ng-minlength="6" required>
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+        <span style="color: red" ng-show="RegisterFrom.email.$dirty && RegisterFrom.email.$invalid">The Password min is 6 character.</span>
     </div>
+
     <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Retype password">
+        <input type="password" ng-model="repass" name="repass" class="form-control" placeholder="Retype password" required>
         <span class="glyphicon glyphicon-log-in form-control-feedback"></span>
+        <span style="color: red" ng-show="repass != '' && newUser.password != '' && repass!=newUser.password">The Re-password is not match.</span>
     </div>
+
     <div class="row">
         <div class="col-xs-8">
             <div class="checkbox icheck">
                 <label>
-                    <input type="checkbox"> I agree to the <a href="#">terms</a>
+                    <input i-check type="checkbox" ng-model="isAgree" > I agree to the <a>terms</a>
                 </label>
             </div>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-            <button type="submit" class="btn btn-primary btn-block btn-flat">Register</button>
+            <button type="submit" class="btn btn-primary btn-block btn-flat" ng-disabled="!isAgree || RegisterFrom.$invalid || newUser.password != repass">Register</button>
         </div>
         <!-- /.col -->
     </div>
