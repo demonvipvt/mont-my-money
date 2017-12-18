@@ -24,10 +24,10 @@ router.post('/login', function (req, res, next) {
 		req.error = error;
 		if(data && data.length > 0){
 			req.data = {
-				token : jwt.createToken(data.userId),
-				type : data.type,
-				email : data.email,
-				fullname : data.fullname
+				token : jwt.createToken(data[0].userId),
+				type : data[0].type,
+				email : data[0].email,
+				fullname : data[0].fullname
 			};
 		}
 		next();

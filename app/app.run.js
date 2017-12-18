@@ -7,8 +7,7 @@ app.run(function ($localStorage, $http, $rootScope, UserService) {
         UserService.getInfo().$promise.then(function(res){
         	$rootScope.profile = res.data;
         }, function(error){
-            console.log(error)
-        	// delete $localStorage.token;
+        	delete $localStorage.token;
         })
     }
 });
