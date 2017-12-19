@@ -4,20 +4,8 @@ var express = require('express'),
 	helper = require('./helper.js'),
 	jwt = require('./jwt.js'),
 	userModel = require('../models/user.js');
-// middleware that is specific to this router
-// router.use(jwt.verifyToken);
-// define the home page route
-router.get('/', jwt.verifyToken, function (req, res, next) {
-	if(!req.userId) next();
-	
-	userModel.getInfo(req.userId, function( error, data){
-		req.error = error;
-		if(data){
-			req.data = data[0];
-		}
-		next();
-	})
-});
+
+// non-check token functions
 router.post('/login', function (req, res, next) {
 	var user = req.body;
 	userModel.login(user, function( error, data){
@@ -43,6 +31,21 @@ router.post('/register', function (req, res, next) {
 				token : jwt.createToken(data.insertId),
 				type : user.type
 			};
+		}
+		next();
+	})
+});
+
+// middleware that is specific to this router
+router.use(jwt.verifyToken);
+// define the home page route
+router.get('/', function (req, res, next) {
+	if(!req.userId) next();
+	
+	userModel.getInfo(req.userId, function( error, data){
+		req.error = error;
+		if(data){
+			req.data = data[0];
 		}
 		next();
 	})

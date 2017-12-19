@@ -1,15 +1,12 @@
 /* app css stylesheet */
 .wellcome{
-  position: fixed;
-  width: 100%;
-  height: 100%;
   padding-top: 15%;
   text-align: center;
 }
 
 .auth-page {
     background: #d2d6de;
-    position: fixed;
-    width: 100%;
-    overflow: auto;
+    /*position: fixed;*/
+    /*width: 100%;*/
+    /*overflow: auto;*/
 }
